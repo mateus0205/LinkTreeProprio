@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    flex-direction: column;  /* Para alinhar a imagem e o título em coluna */
+    justify-content: flex-start; /* Alinha verticalmente no centro - partindo do topo*/
+    align-items: center;     /* Alinha horizontalmente no centro */
+    height: 100vh;           /* Ocupa toda a altura da tela */
+    margin: 0;               /* Remove a margem padrão do body */
+    padding-top: 40px;      /*Adiciona margem ao topo */
+    color: black;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    
+    
+}
+
+.foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden; /* Impede que a imagem saia do contorno arredondado */
+    
+}
+
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta a imagem sem distorção */
+}
+
+.buttons {
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.blob-btn {
+    z-index: 1;
+    position: relative;
+    padding: 46px 265px; /* Ajusta o tamanho do botão sem afetar o tamanho total */
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0505A9; /* Cyan color */
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px; /* Tamanho fixo do botão */
+    max-width: 400px; /* Garante que o botão não ultrapasse 400px */
+    white-space: nowrap; /* Evita quebra de linha */
+    overflow: hidden; /* Garante que o texto não ultrapasse os limites do botão */
+    text-overflow: ellipsis; /* Exibe reticências se o texto for maior que o botão */
+}
+
+
+.blob-btn:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #0505A9; /* Cyan border */
+    border-radius: 30px;
+}
+
+.blob-btn:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: 3px; /* Adjusted from $borderW*1.5 */
+    top: 3px; /* Adjusted from $borderW*1.5 */
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s 0.2s;
+    border-radius: 30px;
+}
+
+.blob-btn:hover {
+    color: #FFFFFF; /* Dark color for hover effect */
+    border-radius: 30px;
+}
+
+.blob-btn:hover:after {
+    transition: all 0.3s;
+    left: 0;
+    top: 0;
+    border-radius: 30px;
+}
+
+.blob-btn__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    background: #ffffff;
+}
+
+.blob-btn__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+}
+
+.blob-btn__blob {
+    position: absolute;
+    top: 2px; /* Adjusted from $borderW */
+    width: 25%; /* Adjusted from 100% / $numOfBlobs */
+    height: 100%;
+    background: #0505A9; /* Cyan color */
+    border-radius: 100%;
+    transform: translate3d(0, 150%, 0) scale(1.7);
+    transition: transform 0.45s;
+}
+
+.blob-btn__blob:nth-child(1) {
+    left: 0;
+    transition-delay: 0s;
+}
+
+.blob-btn__blob:nth-child(2) {
+    left: 25%;
+    transition-delay: 0.08s;
+}
+
+.blob-btn__blob:nth-child(3) {
+    left: 50%;
+    transition-delay: 0.16s;
+}
+
+.blob-btn__blob:nth-child(4) {
+    left: 75%;
+    transition-delay: 0.24s;
+}
+
+.blob-btn:hover .blob-btn__blob {
+    transform: translateZ(0) scale(1.7);
+    filter: url('#goo');
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+      color: white;
+      background-color: #121212; /* Exemplo de fundo escuro */
+    }
+  }
+
